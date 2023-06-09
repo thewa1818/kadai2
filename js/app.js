@@ -11,16 +11,27 @@ $(".closeBtn2").on("click",function(){
   $(".closeBtn").fadeIn(1000);
 })
 
-
-
 $(".header_list-item").hover(function(){
-  $(this).css("background-color","#d4d1d1");
+  $(this).css("background-color","gray");
 },
 function(){
   $(this).css("background-color","#fff");
 })
 
-$('header_item').scrollTop()
+$(function () {
+  $(window).scroll(function () {
+    const windowHeight = $(window).height();
+    const scroll = $(window).scrollTop();
+
+    $(".main_item,.main_item2").each(function () {
+      const targetPosition = $(this).offset().top;
+      if (scroll > targetPosition - windowHeight + 100) {
+        $(this).addClass("is-fadein");
+      }
+    });
+  });
+});
+
 
 
 
